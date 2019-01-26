@@ -1,0 +1,17 @@
+.heading-div {
+    font-family: 'Comic Sans MS';
+    background-color: #FFCCE3;
+    color: #fff;
+    margin: 0;
+    padding: 5px 15px;
+    position: relative;
+    border-bottom: 2.5px solid #535353;
+
+    td {
+        width: 100%;
+
+        h1 { margin-bottom: 0; }
+        h3 { margin-top: 0; }
+        fa-icon { font-size: 3em; }
+    }
+}

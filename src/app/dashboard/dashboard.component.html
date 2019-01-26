@@ -1,0 +1,24 @@
+<nav>
+  <a routerLink="/create"><fa-icon [icon]="faPlus"></fa-icon></a>
+  <a (click)="deleteNote()" *ngIf="selectedNote"><fa-icon [icon]="faTrashAlt"></fa-icon></a>
+</nav>
+
+<table>
+  <tr>
+    <td class="split-td">
+      <table>
+        <tr *ngFor="let note of notes" (click)="focusNote(note)" [class.selectedNote]="selectedNote === note">
+          <td>
+            <fa-icon [icon]="faStickyNote"></fa-icon>
+          </td>
+          <td>
+            {{note.title}}
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td class="split-td">
+      <app-note-detail *ngIf="selectedNote" [sNote]="selectedNote"></app-note-detail>
+    </td>
+  </tr>
+</table>

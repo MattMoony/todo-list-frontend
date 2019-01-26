@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todolist-angular';
+  title = 'Matthias\' To-Do List';
+  subtitle = 'by Matthias';
+  
+  faCalendarCheck = faCalendarCheck;
 }
