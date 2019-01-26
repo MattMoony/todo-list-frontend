@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faStickyNote, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faStickyNote, faPlus, faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Note } from '../../../../Note';
 import { NoteServiceService } from '../note-service.service';
 
@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   faStickyNote = faStickyNote;
   faPlus = faPlus;
   faTrashAlt = faTrashAlt;
+  faEdit = faEdit;
 
   notes: Note[];
   selectedNote: Note;

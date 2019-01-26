@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Note } from '../../../../Note';
@@ -15,16 +16,32 @@ export class NoteCreatorComponent implements OnInit {
   faArrowLeft = faArrowLeft;
 
   cNote: Note;
+  edit: boolean;
 
-  constructor(private noteService: NoteServiceService, private location: Location) { }
+  constructor(
+    private noteService: NoteServiceService, 
+    private location: Location,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    this.cNote = new Note("", "", new Date());
+    this.edit = this.route.snapshot.url[0].path === "edit";
+    if (this.edit) {
+      this.noteService.getNote(+this.route.snapshot.paramMap.get('id')).subscribe(n => this.cNote = n);
+    } else {
+      this.cNote = new Note("", "", new Date());
+    }
   }
 
   createNote(): void {
-    if (this.cNote.title && this.cNote.content) {
-      this.noteService.addNode(this.cNote).subscribe(r => this.location.back());
+    if (!this.edit) {
+      if (this.cNote.title && this.cNote.content) {
+        this.noteService.addNode(this.cNote).subscribe(r => window.location.assign('../dashboard'));
+      }
+    } else {
+      if (this.cNote) {
+        this.noteService.editNote(this.cNote).subscribe(r => window.location.assign('../dashboard'));
+      }
     }
   }
 

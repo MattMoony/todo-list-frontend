@@ -1,5 +1,6 @@
 <nav>
   <a routerLink="/create"><fa-icon [icon]="faPlus"></fa-icon></a>
+  <a *ngIf="selectedNote" routerLink="/edit/{{selectedNote.id}}"><fa-icon [icon]="faEdit"></fa-icon></a>
   <a (click)="deleteNote()" *ngIf="selectedNote"><fa-icon [icon]="faTrashAlt"></fa-icon></a>
 </nav>
 

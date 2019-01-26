@@ -5,9 +5,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NoteCreatorComponent } from './note-creator/note-creator.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'create', component: NoteCreatorComponent}
+  {path: 'create', component: NoteCreatorComponent},
+  {path: 'edit/:id', component: NoteCreatorComponent},
+  {path: '', redirectTo: '/dashboard', pathMatch: 'prefix'}
 ];
 
 @NgModule({

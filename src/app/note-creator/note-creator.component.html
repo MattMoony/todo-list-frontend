@@ -7,7 +7,7 @@
       Preview
     </th>
   </tr>
-  <tr>
+  <tr *ngIf="cNote">
     <td>
       <div class="div-form">
         <label>Title: <input type="text" [(ngModel)]="cNote.title" placeholder="..." maxlength="255" /></label>
