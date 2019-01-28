@@ -21,7 +21,7 @@
           </button>
           <input (click)="createNote()" type="button" value="Submit" [class.unclickable]="!cNote.title || !cNote.content 
             || !captchaResponse"
-            [class.clickable]="cNote.title && cNote.content" />
+            [class.clickable]="cNote.title && cNote.content && captchaResponse" />
         </div>
       </div>
     </td>

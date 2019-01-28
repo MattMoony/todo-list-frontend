@@ -18,7 +18,7 @@ export class NoteCreatorComponent implements OnInit {
   cNote: Note;
   edit: boolean;
 
-  private captchaResponse: string;
+  captchaResponse: string;
 
   constructor(
     private noteService: NoteServiceService, 
