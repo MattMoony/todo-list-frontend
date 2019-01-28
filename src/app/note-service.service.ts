@@ -25,12 +25,12 @@ export class NoteServiceService {
     return this.httpClient.get<Note[]>(baseURL + '/api/notes', httpOptions).pipe();
   }
 
-  addNode(note: Note): Observable<string> {
-    return this.httpClient.post<string>(baseURL + '/api/notes/add', note, httpOptions).pipe();
+  addNode(captchaResponse: string, note: Note): Observable<string> {
+    return this.httpClient.post<string>(baseURL + '/api/notes/add', [captchaResponse, note], httpOptions).pipe();
   }
 
-  editNote(note: Note): Observable<string> {
-    return this.httpClient.post<string>(baseURL + `/api/notes/edit/${note.id}`, note, httpOptions).pipe();
+  editNote(captchaResponse: string, note: Note): Observable<string> {
+    return this.httpClient.post<string>(baseURL + `/api/notes/edit/${note.id}`, [captchaResponse, note], httpOptions).pipe();
   }
 
   deleteNote(id: number): void {

@@ -13,11 +13,14 @@
         <label>Title: <input type="text" [(ngModel)]="cNote.title" placeholder="..." maxlength="255" /></label>
         <label>Message: <textarea [(ngModel)]="cNote.content" placeholder="..." maxlength="1023"></textarea></label>
 
+        <re-captcha (resolved)="resolved($event)" siteKey="6LelVo0UAAAAAOudr8yyeiFVOJjpd9Le69X3lSK0"></re-captcha>
+
         <div id="lower-group">
           <button class="back-arrow" (click)="goBack()">
             <fa-icon [icon]="faArrowLeft"></fa-icon>
           </button>
-          <input (click)="createNote()" type="button" value="Submit" [class.unclickable]="!cNote.title || !cNote.content"
+          <input (click)="createNote()" type="button" value="Submit" [class.unclickable]="!cNote.title || !cNote.content 
+            || !captchaResponse"
             [class.clickable]="cNote.title && cNote.content" />
         </div>
       </div>

@@ -18,6 +18,8 @@ export class NoteCreatorComponent implements OnInit {
   cNote: Note;
   edit: boolean;
 
+  private captchaResponse: string;
+
   constructor(
     private noteService: NoteServiceService, 
     private location: Location,
@@ -36,16 +38,20 @@ export class NoteCreatorComponent implements OnInit {
   createNote(): void {
     if (!this.edit) {
       if (this.cNote.title && this.cNote.content) {
-        this.noteService.addNode(this.cNote).subscribe(r => window.location.assign('../dashboard'));
+        this.noteService.addNode(this.captchaResponse, this.cNote).subscribe(r => window.location.assign('../dashboard'));
       }
     } else {
       if (this.cNote) {
-        this.noteService.editNote(this.cNote).subscribe(r => window.location.assign('../dashboard'));
+        this.noteService.editNote(this.captchaResponse, this.cNote).subscribe(r => window.location.assign('../dashboard'));
       }
     }
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  resolved(capRes: string): void {
+    this.captchaResponse = capRes;
   }
 }
